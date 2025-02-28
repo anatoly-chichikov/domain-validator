@@ -1,9 +1,11 @@
-use domain_validator::domain_parser;
+use domain_validator::api;
 
-fn main() {
-    let url = "https://www.example.com/path";
-    match domain_parser::parse_url(url) {
-        Ok(host) => println!("Parsed host: {}", host),
-        Err(e) => println!("Error parsing URL: {}", e),
-    }
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    println!("Starting Domain Validator Web Service...");
+    println!("Server will be available at http://localhost:3000");
+    println!("Use the endpoint: http://localhost:3000/parse?url=<your-url>");
+    println!("Press Ctrl+C to stop the server");
+    
+    api::start_service().await
 }
