@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 url = "2.4.1"
 regex = "1.9.5"
+publicsuffix = "2.2.3"
+idna = "0.4.0"

@@ -7,75 +7,75 @@
 ## Step 1: Core URL Parsing and Normalization
 
 ### Functional Requirements
-- [ ] **URL Parsing:** 
+- [x] **URL Parsing:** 
   - Use a standard URL parsing library (e.g., `url`) to extract the host component from a URL.
-- [ ] **Normalization:** 
+- [x] **Normalization:** 
   - Normalize hostnames to lowercase.
   - Remove any trailing dots.
   - Decode percent-encoded characters in the host.
-- [ ] **User Info & Port Stripping:** 
+- [x] **User Info & Port Stripping:** 
   - Remove any user info (e.g., `user:pass@`) and port numbers from the host.
-- [ ] **Exclusion of IPs:** 
+- [x] **Exclusion of IPs:** 
   - Detect and exclude IP addresses (both IPv4 and IPv6) from domain parsing.
 
 ### Test Requirements (~15 URL Parsing Tests)
-- [ ] Validate parsing of standard URLs (e.g., `https://www.example.com/path`).
-- [ ] Verify proper handling of URLs containing user info (e.g., `http://user:pass@www.example.com`).
-- [ ] Check correct parsing when ports are present (e.g., `http://www.example.com:8080`).
-- [ ] Ensure that invalid URL formats are handled gracefully.
-- [ ] Test URLs with multiple subdomains.
-- [ ] Validate URLs with missing schemes or ambiguous formats.
-- [ ] Check parsing for URLs with query parameters and fragments.
-- [ ] Test cases with percent-encoded characters in the host.
-- [ ] Verify behavior with trailing dots in the host.
-- [ ] Validate handling of uppercase and mixed-case URLs.
-- [ ] Confirm proper extraction when extra slashes or redundant separators are present.
-- [ ] Test URLs with IPv6 literal notation (ensuring they are excluded as required).
-- [ ] Validate URLs with unusual but valid characters.
-- [ ] Confirm that URL parsing libraries correctly separate the path from the host.
-- [ ] Test URLs that are borderline invalid to verify robust error handling.
+- [x] Validate parsing of standard URLs (e.g., `https://www.example.com/path`).
+- [x] Verify proper handling of URLs containing user info (e.g., `http://user:pass@www.example.com`).
+- [x] Check correct parsing when ports are present (e.g., `http://www.example.com:8080`).
+- [x] Ensure that invalid URL formats are handled gracefully.
+- [x] Test URLs with multiple subdomains.
+- [x] Validate URLs with missing schemes or ambiguous formats.
+- [x] Check parsing for URLs with query parameters and fragments.
+- [x] Test cases with percent-encoded characters in the host.
+- [x] Verify behavior with trailing dots in the host.
+- [x] Validate handling of uppercase and mixed-case URLs.
+- [x] Confirm proper extraction when extra slashes or redundant separators are present.
+- [x] Test URLs with IPv6 literal notation (ensuring they are excluded as required).
+- [x] Validate URLs with unusual but valid characters.
+- [x] Confirm that URL parsing libraries correctly separate the path from the host.
+- [x] Test URLs that are borderline invalid to verify robust error handling.
 
 ---
 
 ## Step 2: Domain Extraction using PSL and IDN Handling
 
 ### Functional Requirements
-- [ ] **Public Suffix List (PSL) Integration:**
+- [x] **Public Suffix List (PSL) Integration:**
   - Integrate a Rust crate (e.g., `publicsuffix`) to use the PSL for determining the effective top-level domain plus one (eTLD+1).
   - Ensure extraction of root domains for both simple and compound TLDs.
-- [ ] **IDN Handling:**
+- [x] **IDN Handling:**
   - Use an IDN library (e.g., `idna`) to support conversion from Unicode to punycode.
   - Normalize and extract root domains from internationalized domain names.
-- [ ] **Flexibility:**
+- [x] **Flexibility:**
   - Allow the implementation to choose the most suitable Rust methods for PSL and IDN conversion.
 
 ### Test Requirements
 
 #### PSL Tests (~12 tests)
-- [ ] Test extraction of root domains for simple TLDs (e.g., `example.com`).
-- [ ] Test extraction for compound TLDs (e.g., `example.co.uk`, `example.blogspot.com.au`).
-- [ ] Verify correct handling of PSL exceptions (e.g., cases like `!parliament.uk`).
-- [ ] Validate that the longest matching PSL rule is applied.
-- [ ] Confirm behavior with domains having multiple potential PSL matches.
-- [ ] Test with domains using new or less common TLDs.
-- [ ] Validate extraction for domains with non-standard but valid PSL entries.
-- [ ] Test domains where the PSL data is updated dynamically.
-- [ ] Confirm correct behavior for domains not present in the PSL (fallback logic).
-- [ ] Validate performance for bulk PSL lookups.
-- [ ] Test domain extraction with domains that have hyphenated labels.
-- [ ] Ensure that the system gracefully handles malformed PSL entries.
+- [x] Test extraction of root domains for simple TLDs (e.g., `example.com`).
+- [x] Test extraction for compound TLDs (e.g., `example.co.uk`, `example.blogspot.com.au`).
+- [x] Verify correct handling of PSL exceptions (e.g., cases like `!parliament.uk`).
+- [x] Validate that the longest matching PSL rule is applied.
+- [x] Confirm behavior with domains having multiple potential PSL matches.
+- [x] Test with domains using new or less common TLDs.
+- [x] Validate extraction for domains with non-standard but valid PSL entries.
+- [x] Test domains where the PSL data is updated dynamically.
+- [x] Confirm correct behavior for domains not present in the PSL (fallback logic).
+- [x] Validate performance for bulk PSL lookups.
+- [x] Test domain extraction with domains that have hyphenated labels.
+- [x] Ensure that the system gracefully handles malformed PSL entries.
 
 #### IDN Tests (~10 tests)
-- [ ] Validate conversion from Unicode to punycode for domains (e.g., `münchen.de` → `xn--mnchen-3ya.de`).
-- [ ] Test extraction of the root domain for Unicode domains.
-- [ ] Verify that mixed-case Unicode domains are normalized correctly.
-- [ ] Check conversion accuracy for domains with non-Latin characters (e.g., `東京.jp`).
-- [ ] Test handling of IDNs with accented characters.
-- [ ] Verify correct round-trip conversion (Unicode to punycode and back).
-- [ ] Test handling of domains with multiple Unicode characters.
-- [ ] Validate proper extraction when percent-encoding is mixed with Unicode.
-- [ ] Ensure that invalid Unicode domains are handled gracefully.
-- [ ] Confirm that IDN tests work correctly with the PSL lookup process.
+- [x] Validate conversion from Unicode to punycode for domains (e.g., `münchen.de` → `xn--mnchen-3ya.de`).
+- [x] Test extraction of the root domain for Unicode domains.
+- [x] Verify that mixed-case Unicode domains are normalized correctly.
+- [x] Check conversion accuracy for domains with non-Latin characters (e.g., `東京.jp`).
+- [x] Test handling of IDNs with accented characters.
+- [x] Verify correct round-trip conversion (Unicode to punycode and back).
+- [x] Test handling of domains with multiple Unicode characters.
+- [x] Validate proper extraction when percent-encoding is mixed with Unicode.
+- [x] Ensure that invalid Unicode domains are handled gracefully.
+- [x] Confirm that IDN tests work correctly with the PSL lookup process.
 
 ---
 
