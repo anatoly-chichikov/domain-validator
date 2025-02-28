@@ -1,0 +1,8 @@
+[package]
+name = "domain-validator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+url = "2.4.1"
+regex = "1.9.5"
